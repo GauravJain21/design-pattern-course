@@ -130,9 +130,18 @@ public class EditItemActivity extends AppCompatActivity{
     }
 
     public void deleteItem(View view) {
-        item_list.deleteItem(item);
+        // item_list.deleteItem(item);
 
-        item_list.saveItems(context);
+        // item_list.saveItems(context);
+
+        DeleteItemCommand deleteItemCommand = new DeleteItemCommand(item_list, item, context);
+        deleteItemCommand.execute();
+
+        boolean success = deleteItemCommand.isExecuted();
+
+        if (!success) {
+            return;
+        }
 
         // End EditItemActivity
         Intent intent = new Intent(this, MainActivity.class);
