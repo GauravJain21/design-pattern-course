@@ -12,6 +12,7 @@ public class EditContactCommand extends Command{
         this.oldContact = oldContact;
         this.newContact = newContact;
         this.context = context;
+
     }
 
     @Override
